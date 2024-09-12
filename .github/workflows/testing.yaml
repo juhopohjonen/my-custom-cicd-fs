@@ -8,6 +8,7 @@ jobs:
     env:
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       SECRET: ${{ secrets.SECRET }}
+      PORT: 5000
 
     runs-on: ubuntu-20.04
     steps:
