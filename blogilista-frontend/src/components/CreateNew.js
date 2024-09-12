@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import blogService from '../services/blogs'
 
 import { SuccessMessage, FailedMessage } from '../components/messages' 
 
@@ -19,8 +18,6 @@ const CreateNew = ({ setBlogs, blogs, createBlogFunc }) => {
 
     const sendBlog = async (event) => {
         event.preventDefault()
-
-        let createdBlog = null
         
     
         try {

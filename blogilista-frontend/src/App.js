@@ -3,7 +3,7 @@ import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
 import CreateNew from './components/CreateNew'
-import { SuccessMessage, FailedMessage } from './components/messages'
+import { FailedMessage } from './components/messages'
 
 const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 
@@ -25,8 +25,7 @@ const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 
 
     try {
-      const returnedBlog = await blogService.changeBlog(blogObject)
-      console.log('blog likes are', newBlogLikes)
+      await blogService.changeBlog(blogObject)
       return newBlogLikes
 
     } catch (e) {
@@ -59,12 +58,10 @@ const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 
 const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
 
-  console.log('visibility is ', visibility)
 
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-  const [successMessage, setSuccessMessage] = useState(null)
   const [failedMessage, setFailedMessage] = useState(null)
 
 
@@ -108,7 +105,6 @@ const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
   return (
     <div id='loginDiv'>
 
-      <SuccessMessage id='success' message={successMessage} />
       <FailedMessage id='failed' message={failedMessage} /> 
       <h2>log in to application</h2>
       <form onSubmit={submitLogin}>
@@ -133,8 +129,6 @@ const App = () => {
   const [blogs, setBlogs] = useState([])
   const [loginVisible, setLoginVisible] = useState(true)
 
-  const hideWhenVisible = { display: loginVisible ? 'none' : '' }
-  const showWhenVisible = { display: loginVisible ? '' : 'none' }
   const toggleLoginVisibility = () => setLoginVisible(!loginVisible)
 
   const [user, setUser] = useState(null)

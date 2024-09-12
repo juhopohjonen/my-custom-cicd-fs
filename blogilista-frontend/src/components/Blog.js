@@ -47,29 +47,6 @@ const Blog = ({blog, blogs, setBlogs, user, likeFunction}) => {
     }
   }
 
-  const likeBlog = async blog => {
-
-    let newBlogLikes = blogLikes + 1
-
-
-    let blogObject = {
-      user: blog.user,
-      likes: newBlogLikes,
-      author: blog.author,
-      title: blog.title,
-      url: blog.url,
-      id: blog.id
-    }
-
-
-    try {
-      const returnedBlog = await blogLogin.changeBlog(blogObject)
-
-    } catch (e) {
-      alert('Liking the blog failed!')
-    }
-
-  }
 
   console.log('blog', blog)
 
