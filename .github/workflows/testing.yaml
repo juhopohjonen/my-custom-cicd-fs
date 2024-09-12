@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  testing:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '19.9.0'
+      
+      - name: Install deps
+        run: npm install
+
+      - name: Build application for testing
+        run: npm run build
+
+      - name: Run jest for both backend and frontend
+        run: npm run test:jest
+      
+      - name: Run e2e tests
+        run: npm run test:cypress
