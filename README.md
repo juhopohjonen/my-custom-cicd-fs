@@ -1,0 +1,1 @@
+This is a blog application with CI/CD workflows.
