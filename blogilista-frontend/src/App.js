@@ -7,8 +7,6 @@ import { FailedMessage } from './components/messages'
 
 const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 
-
-
   const likeBlog = async (blog, likes) => {
 
     let newBlogLikes = likes + 1
@@ -103,10 +101,10 @@ const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
   }
 
   return (
-    <div id='loginDiv'>
+    <div id='loginDiv' style={{ margin: '5px' }}>
 
       <FailedMessage id='failed' message={failedMessage} /> 
-      <h2>log in to application</h2>
+      <h2>log in to the application</h2>
       <form onSubmit={submitLogin}>
         <div>
           username
@@ -114,13 +112,31 @@ const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
         </div>
         <div>
           password
-          <input type={'password'} id='pass' value={password} onChange={changePass} />
+          <input type='password' id='pass' value={password} onChange={changePass} />
         </div>
 
-        <input type='submit' id='submit' />
+        <div style={{ marginTop: '5px', display: 'flex', gap: '5px' }}>
+
+
+        <input className='btn btn-primary' type='submit' id='submit' value='Submit' />
+
+          <button onClick={toggleVisibility} className='btn btn-secondary'>Cancel</button>
+        </div>
+
       </form>
 
-      <button onClick={toggleVisibility}>cancel</button>
+
+      <div style={{ marginTop: '10px' }}>
+        <h3>Sign up</h3>
+        <p>Sign up by sending following JSON object to /api/users with these attributes via POST request</p>
+        <code>
+          username,
+          name,
+          password
+        </code>
+      </div>
+
+
     </div>
   )
 }
