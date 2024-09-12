@@ -10,7 +10,8 @@
     "testdev": "cross-env NODE_ENV=test nodemon index.js",
     "init:cypress": "cypress run --project ./blogilista-frontend",
     "test:cypress": "cross-env NODE_ENV=test start-server-and-test testdev http://localhost:5000 init:cypress",
-    "build": "cd blogilista-frontend && npm run build"
+    "build": "cd blogilista-frontend && npm run build",
+    "install:frontend": "cd blogilista-frontend && npm install"
   },
   "author": "juho pohjonen",
   "license": "MIT",

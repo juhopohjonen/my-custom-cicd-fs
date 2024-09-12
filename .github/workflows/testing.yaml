@@ -12,8 +12,11 @@ jobs:
         with:
           node-version: '19.9.0'
       
-      - name: Install deps
+      - name: Install backend deps
         run: npm install
+
+      - name: Install frontend deps
+        run: npm run install:frontend
 
       - name: Build application for testing
         run: npm run build
@@ -23,3 +26,5 @@ jobs:
       
       - name: Run e2e tests
         run: npm run test:cypress
+
+  
