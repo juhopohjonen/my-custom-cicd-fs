@@ -6,7 +6,7 @@ on:
 jobs:
   testing:
     env:
-      TEST_DATABASE_URI: ${{ secrets.TEST_DATABASE_URI }}
+      TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4
