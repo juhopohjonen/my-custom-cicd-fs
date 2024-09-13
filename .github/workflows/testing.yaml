@@ -20,8 +20,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-
-
         with:
           node-version: '19.9.0'
       
