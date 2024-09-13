@@ -13,6 +13,7 @@ jobs:
     env:
       TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       SECRET: ${{ secrets.SECRET }}
+      BUILD_AUTHENTICATION_KEY: ${{ secrets.BUILD_AUTHENTICATION_KEY }}
       PORT: 5000
 
     runs-on: ubuntu-20.04
