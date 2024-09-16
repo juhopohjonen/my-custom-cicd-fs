@@ -44,3 +44,15 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' }}
+
+    
+                    
+      - name: HTTP Request Action
+        uses: fjogeleit/http-request-action@v1.16.2
+        with:
+          url: 'https://blogilista.fly.dev/api/builds'
+          customHeaders: |
+            Authorization: ${{ secrets.BUILD_AUTHENTICATION_KEY }}
+          data: '{"username": "${{ github.actor }}", "commitId": "${{ github.event.pull_request.merge_commit_sha }}", "status": "ok"}'
+
+        if: success()

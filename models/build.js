@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const buildSchema = mongoose.Schema({
     commitId: String,
-    githubUsername: String
+    githubUsername: String,
+    status: String
 })
 
 buildSchema.set('toJSON', {
