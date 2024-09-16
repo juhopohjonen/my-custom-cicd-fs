@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const body = {
-    commitId: process.env.commitId,
+    commitId: process.env.commitId ? process.env.commitId : 'Merge to main',
     githubUsername: process.env.githubUsername,
     status: process.env.ACTION_STATUS === 'FAIL' ? 'FAIL' : 'OK'
 }
