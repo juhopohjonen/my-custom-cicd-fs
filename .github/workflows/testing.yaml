@@ -52,7 +52,7 @@ jobs:
         with:
           url: 'https://blogilista.fly.dev/api/builds'
           customHeaders: |
-            Authorization: ${{ secrets.BUILD_AUTHENTICATION_KEY }}
+            {"Authorization": "${{ secrets.BUILD_AUTHENTICATION_KEY" }}
           data: '{"username": "${{ github.actor }}", "commitId": "${{ github.event.pull_request.merge_commit_sha }}", "status": "ok"}'
 
         if: success()
