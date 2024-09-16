@@ -11,7 +11,10 @@
     "init:cypress": "cypress run --project ./blogilista-frontend",
     "test:cypress": "cross-env NODE_ENV=test start-server-and-test testdev http://localhost:5000 init:cypress",
     "build": "cd blogilista-frontend && npm run build",
-    "install:frontend": "cd blogilista-frontend && npm install"
+    "install:frontend": "cd blogilista-frontend && npm install",
+
+    "actions:success": "cross-env ACTION_STATUS=OK node cicd-scripts/message_action.js",
+    "actions:fail": "cross-env ACTION_STATUS=FAIL node cicd-scripts/message_action.js"
   },
   "author": "juho pohjonen",
   "license": "MIT",

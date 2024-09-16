@@ -13,7 +13,7 @@ buildController.get('/', async (req, res) => {
 })
 
 buildController.post('/', async (req, res) => {
-    const { commitId, githubUsername } = req.body
+    const { commitId, githubUsername, status } = req.body
 
     let token = null
 
@@ -30,7 +30,8 @@ buildController.post('/', async (req, res) => {
 
     const newBuild = new Build({
         commitId,
-        githubUsername
+        githubUsername,
+        status
     })
 
     await newBuild.save()
