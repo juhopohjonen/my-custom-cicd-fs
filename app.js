@@ -8,6 +8,7 @@ const loginRouter = require('./controllers/login')
 const logger = require('./utils/logger')
 const jwt = require('jsonwebtoken')
 const User = require('./models/user')
+const buildController = require('./controllers/builds')
 
 const app = express()
 mongoose.connect(config.MONGODB_URI)
@@ -43,8 +44,12 @@ const userExtractor = async (request, response, next) => {
 
 app.use(express.static('dist'))
 
+
 app.use(cors())
 app.use(express.json())
+
+app.use('/api/builds', buildController)
+
 app.use(tokenExtractor)
 app.use(userExtractor)
 
