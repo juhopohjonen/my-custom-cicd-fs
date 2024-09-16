@@ -4,6 +4,7 @@ import blogService from './services/blogs'
 import loginService from './services/login'
 import CreateNew from './components/CreateNew'
 import { FailedMessage } from './components/messages'
+import BuildView from './components/BuildView'
 
 const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 
@@ -55,6 +56,7 @@ const Blogs = ({ blogs, user, logoutFunc, setBlogs }) => {
 }
 
 const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
+
 
 
   const [username, setUserName] = useState('')
@@ -134,6 +136,12 @@ const SignIn = ({ setUserState, visibility, toggleVisibility }) => {
           name,
           password
         </code>
+      </div>
+
+      <br />
+
+      <div>
+        <BuildView />
       </div>
 
 
