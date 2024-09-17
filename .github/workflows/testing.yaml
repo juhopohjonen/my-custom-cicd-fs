@@ -45,6 +45,11 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' }}
 
+
+      # The success/fail message scripts send an http request to build api.
+      # The commit sha, status and github username are displayed on front
+      # page of the application
+
     
       - name: success message
         run: npm run actions:success
