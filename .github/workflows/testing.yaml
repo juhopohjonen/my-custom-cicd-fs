@@ -53,7 +53,7 @@ jobs:
           commitId: ${{ github.event.pull_request.merge_commit_sha }}
           githubUsername: ${{ github.actor }}
 
-        if: ${{ success() && github.event_name != 'push' }}
+        if: ${{ success() }}
 
       - name: failure message
         run: npm run actions:fail
@@ -63,3 +63,22 @@ jobs:
           githubUsername: ${{ github.actor }}
 
         if: ${{ failure() }}
+
+  update-version:
+    needs: [test-and-deploy]
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+
+      - name: update version ON MERGE
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+
+        if: github.event_name == 'push'
