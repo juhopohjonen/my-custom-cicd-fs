@@ -55,7 +55,7 @@ jobs:
         run: npm run actions:success
 
         env:
-          commitId: ${{ github.event.pull_request.merge_commit_sha }}
+          commitId: ${{ github.event.pull_request.head.sha }}
           githubUsername: ${{ github.actor }}
 
         if: ${{ success() }}
@@ -64,7 +64,7 @@ jobs:
         run: npm run actions:fail
 
         env:
-          commitId: ${{ github.event.pull_request.merge_commit_sha }}
+          commitId: ${{ github.event.pull_request.head.sha }}
           githubUsername: ${{ github.actor }}
 
         if: ${{ failure() }}
@@ -78,7 +78,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
 
       - name: update version ON MERGE
         uses: anothrNick/github-tag-action@1.64.0
