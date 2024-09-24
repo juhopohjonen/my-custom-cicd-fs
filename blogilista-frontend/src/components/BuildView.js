@@ -22,7 +22,7 @@ const BuildView = () => {
 
     return (
         <div>
-            <h4>Latest build</h4>
+            <h4>Latest build { latestBuild.status === 'OK' ? '👍' : '' }</h4>
             <p>Commit: {latestBuild.commitId}</p>
             <p>User: {latestBuild.githubUsername }</p>
             <p>Status: {latestBuild.status}</p>
